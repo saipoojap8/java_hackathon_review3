@@ -1,0 +1,70 @@
+class CinemaBooking {
+    String movieName;
+    double ticketPrice;
+    int tickets;
+    String customerName;
+
+
+    CinemaBooking() {
+        movieName = "Pushpa";
+        ticketPrice = 200;
+        tickets = 1;
+        customerName = "Pooja";
+    }
+
+    
+    CinemaBooking(String m, double p, int t, String c) {
+        movieName = m;
+        ticketPrice = p;
+        tickets = t;
+        customerName = c;
+    }
+    void bookTickets(int t) {
+        tickets = t;
+    }
+
+    void bookTickets(int t, String c) {
+        tickets = t;
+        customerName = c;
+    }
+
+    void display() {
+        if (tickets <= 0) {
+            System.out.println("Invalid number of tickets");
+            return;
+        }
+
+        double total = ticketPrice * tickets;
+
+        if (tickets >= 5) {
+            total = total - (total * 0.10);
+        }
+
+        System.out.println("Movie Name: " + movieName.toUpperCase());
+        System.out.println("Customer Name: " + customerName.toUpperCase());
+        System.out.println("Number of Tickets: " + tickets);
+        System.out.println("Total Amount: " + (ticketPrice * tickets));
+        System.out.println("Final Amount: " + total);
+    }
+
+    public static void main(String[] args) {
+        CinemaBooking b1 = new CinemaBooking();
+        b1.display();
+
+        System.out.println();
+
+        CinemaBooking b2 = new CinemaBooking("Devara", 250, 5, "Ravi");
+        b2.display();
+
+        System.out.println();
+
+        CinemaBooking b3 = new CinemaBooking("Game Changer", 300, 2, "Priya");
+        b3.bookTickets(6, "Priya");
+        b3.display();
+
+        System.out.println();
+
+        System.out.println("Names Equal: " +
+            b2.customerName.equalsIgnoreCase(b3.customerName));
+    }
+}
